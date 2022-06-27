@@ -7,7 +7,7 @@ class Computer extends Word{
 
         System.out.print("Harf sayısını giriniz: ");
         Random random = new Random();
-        return random.nextInt(10) + 1;
+        return random.nextInt(21) + 1;
     }
 
     String findWord()
