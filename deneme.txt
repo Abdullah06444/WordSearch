@@ -1,0 +1,159 @@
+aa IS_OA
+aada IS_OA
+aaden IS_OA
+aaliyah IS_OA
+aanya IS_OA
+aapo IS_OA
+aarav IS_OA
+aarhus IS_OA
+aaron IS_OA
+aatu IS_OA
+ab CL_ISIM IS_KIS IS_OA
+âb CL_ISIM
+aba CL_ISIM
+abaca IS_OA
+abacan IS_OA
+abacı CL_ISIM
+abacılık CL_ISIM IS_SD
+abaç IS_OA
+abad IS_OA
+abâd CL_ISIM
+abadan CL_ISIM
+abadi CL_ISIM IS_OA
+abajur CL_ISIMezel CL_ISIM IS_OA
+ezelhan IS_OA
+ezeli IS_ADJ IS_OA
+ezelî IS_ADJ
+ezequiel IS_OA
+ezercesine IS_ADVERB
+ezfer IS_OA
+ezgi CL_ISIM IS_OA
+ezgiç CL_ISIM
+ezgilen CL_FIIL
+ezgileş CL_FIIL
+ezgili IS_ADJ
+ezgin IS_ADJ IS_OA
+ezgince IS_ADJ IS_ADVERB
+ezginlik CL_ISIM IS_SD
+ezgisel IS_ADJ
+ezgü IS_OA
+ezgüer IS_OA
+ezgütekin IS_OA
+ezhan IS_OA
+ezheran IS_OA
+ezici CL_ISIM
+ezicilik CL_ISIM IS_SD
+ezik IS_ADJ IS_SD
+eziklik CL_ISIM IS_SD
+ezil CL_FIIL
+ezilgen IS_ADJ
+ezilmiş IS_ADJ
+ezilmişlik CL_ISIM IS_SD
+ezimevi CL_ISIM IS_BILEŞ
+ezinç CL_ISIM IS_SD
+ezine IS_OA
+ezinti CL_ISIM
+eziyet CL_ISIM
+eziyetli IS_ADJ
+eziyetsiz IS_ADJ
+ezkaza IS_ADVERB
+ezme CL_ISIM
+eznev IS_OA
+ezel CL_ISIM IS_OA
+ezelhan IS_OA
+ezeli IS_ADJ IS_OA
+ezelî IS_ADJ
+ezequiel IS_OA
+ezercesine IS_ADVERB
+ezfer IS_OA
+ezgi CL_ISIM IS_OA
+ezgiç CL_ISIM
+ezgilen CL_FIIL
+ezgileş CL_FIIL
+ezgili IS_ADJ
+ezgin IS_ADJ IS_OA
+ezgince IS_ADJ IS_ADVERB
+ezginlik CL_ISIM IS_SD
+ezgisel IS_ADJ
+ezgü IS_OA
+ezgüer IS_OA
+ezgütekin IS_OA
+ezhan IS_OA
+ezheran IS_OA
+ezici CL_ISIM
+ezicilik CL_ISIM IS_SD
+ezik IS_ADJ IS_SD
+eziklik CL_ISIM IS_SD
+ezil CL_FIIL
+ezilgen IS_ADJ
+ezilmiş IS_ADJ
+ezilmişlik CL_ISIM IS_SD
+ezimevi CL_ISIM IS_BILEŞ
+ezinç CL_ISIM IS_SD
+ezine IS_OA
+ezinti CL_ISIM
+eziyet CL_ISIM
+eziyetli IS_ADJ
+eziyetsiz IS_ADJ
+ezkaza IS_ADVERB
+ezme CL_ISIM
+eznev IS_OA
+mecburi IS_ADJ
+mecburiyet CL_ISIM
+meccanen IS_ADVERB
+meccani IS_ADJ
+mecdeddin IS_OA
+mecdi IS_OA
+mecdide IS_OA
+mecdut IS_OA
+mecelle CL_ISIM
+mecerre IS_OA
+mecid IS_OA
+meciddin IS_OA
+mecide IS_OA
+mecidit CL_ISIM
+mecidiye CL_ISIM
+mecit IS_OA
+mecitözü CL_ISIM IS_BILEŞ IS_OA
+mecittin IS_OA
+meclis CL_ISIM IS_OA
+meclisara IS_ADJ
+meclup IS_ADJ
+mecmu CL_ISIM IS_SI
+mecmua CL_ISIM
+şapka CL_ISIM
+şapkacı CL_ISIM
+şapkacılık CL_ISIM IS_SD
+şapkalı CL_ISIM IS_ADJ
+şapkalık CL_ISIM IS_ADJ
+şapkasız IS_ADJ
+şapla CL_FIIL F4PW F_GUD
+şaplak CL_ISIM IS_SD
+şaplat CL_FIIL
+şaplı IS_ADJ
+şappadak IS_ADVERB
+şaprak CL_ISIM IS_SD
+şapşal IS_ADJ
+şapşalak IS_ADJ
+şapşalca IS_ADJ
+şapşallaş CL_FIIL
+şapşallık CL_ISIM IS_SD
+şaptaşı CL_ISIM IS_BILEŞ
+şara IS_OA
+zümrütlen CL_FIIL
+zümrütsü IS_ADJ
+züppe IS_ADJ
+züppece IS_ADVERB
+züppeleş CL_FIIL
+züppelik CL_ISIM IS_SD
+zürafa CL_ISIM
+zürafagiller CL_ISIM IS_CA
+zürare IS_OA
+zürefa CL_ISIM
+zürih IS_OA
+zürra CL_ISIM IS_CA IS_SI
+zürriyet CL_ISIM IS_OA
+zürriyetli IS_ADJ
+zürriyetsiz IS_ADJ
+züyuf CL_ISIM
+zweig IS_OA
