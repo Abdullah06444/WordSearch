@@ -25,15 +25,15 @@ public class Main {
 
                     size = computer.wordLength();
                     System.out.println(size);
-                    //people.setWord(people.function(size));
-                    System.out.println(people.function(size));
+                    //computer.setWord(computer.function(size));
+                    System.out.println(computer.function(size));
                     select = -1;
                 }
                 case 2 -> { // People
 
                     size = people.wordLength();
-                    //computer.setWord(computer.function(size));
-                    System.out.println(computer.function(size));
+                    //people.setWord(people.function(size));
+                    System.out.println(people.function(size));
                     select = -1;
                 }
             }
