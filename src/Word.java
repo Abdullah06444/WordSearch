@@ -8,7 +8,6 @@ abstract class Word {
     private String word;
 
     abstract int wordLength();
-    abstract String findWord();
 
     public String getWord() {
         return word;

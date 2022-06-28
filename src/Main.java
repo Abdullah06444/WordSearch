@@ -7,6 +7,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         int select, size;
+        String str;
 
         Computer computer = new Computer();
         People people = new People();
@@ -25,15 +26,21 @@ public class Main {
 
                     size = computer.wordLength();
                     System.out.println(size);
-                    //computer.setWord(computer.function(size));
-                    System.out.println(computer.function(size));
+                    str = people.readFile(size);
+                    computer.setWord(str);
+                    //System.out.println(computer.readFile(size));
+                    computer.findWord(computer.getWord());
+
                     select = -1;
                 }
                 case 2 -> { // People
 
                     size = people.wordLength();
-                    //people.setWord(people.function(size));
-                    System.out.println(people.function(size));
+                    str = computer.readFile(size);
+                    people.setWord(str);
+                    System.out.println(str);
+                    System.out.println(people.findWord(people.getWord()));
+
                     select = -1;
                 }
             }
