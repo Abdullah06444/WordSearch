@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -8,11 +10,12 @@ import java.util.Scanner;
 
 public class Computer extends Word implements IFile{
 
+    Random random = new Random();
+
     int wordLength()
     {
 
         System.out.print("Harf sayısını giriniz: ");
-        Random random = new Random();
         return random.nextInt(22) + 1;
     }
 
@@ -20,39 +23,44 @@ public class Computer extends Word implements IFile{
     @Override
     public String readFile(int size) throws IOException {
 
-        File file = new File("turkish_dictionary.txt");
-        FileReader fileReader = new FileReader(file);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-
+        Textfile file = new Textfile();
+        BufferedReader s = file.read();
 
         String line;
         ArrayList<String> line3 = new ArrayList<>();
 
-        while((line = bufferedReader.readLine()) != null) {
+        while((line = s.readLine()) != null) {
 
             String[] line2 = line.split("\\s+"); // take only first split from specific line
             if(size == line2[0].length())
                 line3.add(line2[0]);
         }
-        System.out.println(line3);
-        fileReader.close();
+        //System.out.println(line3);
+        file.close();
 
-        Random random = new Random();
         return line3.get(random.nextInt(line3.size()));
     }
 
-    public String findWord(String str)
-    {
-        Scanner scanner = new Scanner(System.in);
+    @Override
+    public String findWord(@NotNull String str) throws IOException, InterruptedException {
         String guessing = "-".repeat(str.length());
         System.out.println(guessing);
 
-/*        int i = -1, j = 9;
+        int i = -1, j = 9;
         do {
 
             System.out.print("Harf tahmin ediyorum: ");
-            Random random = new Random();
-            char ch = random.toString();
+            String line3 = readFile(str.length());
+
+            int k = random.nextInt(line3.length());
+            char ch = line3.charAt(k)/* what am I doing */;
+            System.out.println(ch);
+            System.out.println("line 3 => " + line3);
+            /*
+            * int index = random.nextInt(s.length());
+            * return s.charAt(index);
+            *
+            */
 
             while(str.contains(Character.toString(ch)))
             {
@@ -65,14 +73,17 @@ public class Computer extends Word implements IFile{
             }
             if(!str.contains(Character.toString(ch)))
                 System.out.println("Bilemediniz. " + j-- + " hakkınız kaldı.");
-            else
+            else {
                 System.out.println("Bildiniz!");
+                j++;
+            }
             System.out.println(guessing);
+            Thread.sleep(2000);
 
             if(str.equals(guessing))
                 return "Oyunu kazandınız.";
 
-        }while (j>=0);*/
+        }while (j>=0);
 
         return "Oyunu kaybettiniz.";
     }

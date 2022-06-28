@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         Scanner scanner = new Scanner(System.in);
         int select, size;
@@ -14,38 +14,33 @@ public class Main {
 
         System.out.println("1) Bilgisayar");
         System.out.println("2) İnsan");
-        System.out.println("-1) Çıkış");
-        do {
 
-            System.out.print("İlk oyuncuyu belirleyiniz: ");
+        System.out.print("İlk oyuncuyu belirleyiniz: ");
+        select = scanner.nextInt();
 
-            select = scanner.nextInt();
+        switch (select) {
+            case 1 -> { // Computer
 
-            switch (select) {
-                case 1 -> { // Computer
+                size = computer.wordLength();
+                System.out.println(size);
+                str = people.readFile(size);
+                computer.setWord(str);
+                System.out.println(computer.findWord(computer.getWord()));
 
-                    size = computer.wordLength();
-                    System.out.println(size);
-                    str = people.readFile(size);
-                    computer.setWord(str);
-                    //System.out.println(computer.readFile(size));
-                    computer.findWord(computer.getWord());
 
-                    select = -1;
-                }
-                case 2 -> { // People
-
-                    size = people.wordLength();
-                    str = computer.readFile(size);
-                    people.setWord(str);
-                    System.out.println(str);
-                    System.out.println(people.findWord(people.getWord()));
-
-                    select = -1;
-                }
             }
+            case 2 -> { // People
 
-        }while(select != -1);
+                size = people.wordLength();
+                str = computer.readFile(size);
+                people.setWord(str);
+                System.out.println(str);
+                System.out.println(people.findWord(people.getWord()));
+
+
+            }
+            default -> throw new IllegalStateException("Yanlış seçim yaptınız.");
+        }
 
     }
 }

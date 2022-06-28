@@ -1,8 +1,3 @@
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Random;
-import java.lang.IndexOutOfBoundsException;
-
 abstract class Word {
 
     private String word;
@@ -16,6 +11,5 @@ abstract class Word {
     public void  setWord(String str) {
         this.word = str;
     }
-
 
 }

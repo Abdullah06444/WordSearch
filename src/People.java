@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 public class People extends Word implements IFile{
 
+    Scanner scanner = new Scanner(System.in);
+
     int wordLength()
     {
 
@@ -21,28 +23,28 @@ public class People extends Word implements IFile{
     @Override
     public String readFile(int size) throws IOException {
 
-        File file = new File("turkish_dictionary.txt");
-        FileReader fileReader = new FileReader(file);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        Textfile file = new Textfile();
+        BufferedReader s = file.read();
 
-        Scanner scanner = new Scanner(System.in);
-        String line = scanner.nextLine(), line3;
-        while(line.length() == size && (line3 = bufferedReader.readLine()) != null) {
-            String[] line2 = line3.split("\\s+");
-            if (line.equals(line2[0])) {
-                return line;
-            }
+        String line;
+        String line3 = scanner.nextLine();
+
+        while(line3.length() == size && (line = s.readLine()) != null) {
+
+            String[] line2 = line.split("\\s+"); // take only first split from specific line
+            if (line3.equals(line2[0]))
+                return line3;
         }
+        file.close();
 
         System.out.println("Belirlediğiniz kelime uzunluğu farklı ya da kelime sözlükte bulunamadı.");
         return null;
     }
 
     @Override
-    public String findWord(String str)
+    public String findWord(@NotNull String str) throws StringIndexOutOfBoundsException
     {
 
-        Scanner scanner = new Scanner(System.in);
         String guessing = "-".repeat(str.length());
         System.out.println(guessing);
 
@@ -63,8 +65,10 @@ public class People extends Word implements IFile{
             }
             if(!str.contains(Character.toString(ch)))
                 System.out.println("Bilemediniz. " + j-- + " hakkınız kaldı.");
-            else
+            else {
                 System.out.println("Bildiniz!");
+                j++;
+            }
             System.out.println(guessing);
 
             if(str.equals(guessing))
