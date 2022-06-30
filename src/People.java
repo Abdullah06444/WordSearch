@@ -1,17 +1,14 @@
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class People extends Word implements IFile{
 
     Scanner scanner = new Scanner(System.in);
 
-    int wordLength()
+    public int wordLength()
     {
 
         System.out.print("Harf sayısını belirliyorum: ");
@@ -65,10 +62,9 @@ public class People extends Word implements IFile{
             }
             if(!str.contains(Character.toString(ch)))
                 System.out.println("Bilemediniz. " + j-- + " hakkınız kaldı.");
-            else {
+            else
                 System.out.println("Bildiniz!");
-                j++;
-            }
+
             System.out.println(guessing);
 
             if(str.equals(guessing))

@@ -1,8 +1,8 @@
-abstract class Word {
+public abstract class Word {
 
     private String word;
 
-    abstract int wordLength();
+    public abstract int wordLength();
 
     public String getWord() {
         return word;

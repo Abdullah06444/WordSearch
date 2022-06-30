@@ -1,22 +1,20 @@
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Computer extends Word implements IFile{
 
     Random random = new Random();
 
-    int wordLength()
+    public int wordLength()
     {
 
         System.out.print("Harf sayısını giriniz: ");
-        return random.nextInt(22) + 1;
+        return random.nextInt(15) + 1;
     }
 
     // get the words that the length is equal to determining size
@@ -35,7 +33,6 @@ public class Computer extends Word implements IFile{
             if(size == line2[0].length())
                 line3.add(line2[0]);
         }
-        //System.out.println(line3);
         file.close();
 
         return line3.get(random.nextInt(line3.size()));
@@ -46,42 +43,92 @@ public class Computer extends Word implements IFile{
         String guessing = "-".repeat(str.length());
         System.out.println(guessing);
 
-        int i = -1, j = 9;
+        int i = -1, j = 9, k, m;
+        StringBuilder line4 = new StringBuilder();
         do {
 
             System.out.print("Harf tahmin ediyorum: ");
-            String line3 = readFile(str.length());
 
-            int k = random.nextInt(line3.length());
-            char ch = line3.charAt(k)/* what am I doing */;
-            System.out.println(ch);
-            System.out.println("line 3 => " + line3);
+            Textfile file = new Textfile();
+            BufferedReader s = file.read();
+
+            String line;
+            ArrayList<String> line3 = new ArrayList<>();
+
+            while((line = s.readLine()) != null) {
+
+                String[] line2 = line.split("\\s+"); // take only first split from specific line
+                if(str.length() == line2[0].length())
+                {
+
+                    for (k = 0; k < str.length(); k++)
+                    {
+
+                        if(guessing.charAt(k) == '-' && !line4.toString().contains(Character.toString(line2[0].charAt(k)))
+                        || guessing.charAt(k) == line2[0].charAt(k))
+                            continue;
+                        break;
+                    }
+                    if(k == str.length())
+                        line3.add(line2[0]);
+                }
+            }
+            System.out.println("line3 => " + line3);
+            System.out.println("line4 => " + line4);
+            file.close();
+
+
+
+            Node root = null;
+            for(k = 0; k < line3.size(); k++){
+
+                for(m = 0; m < line3.get(k).length(); m++){
+
+                    if(guessing.charAt(m) == '-')
+                        if(root == null)
+                            root = new Node(line3.get(k).charAt(m));
+                        else
+                            root = root.add(root, line3.get(k).charAt(m));
+                    //System.out.println("buraya geliyor 1 => count => " + count++ + " y => " + y);
+                }
+            }
+            //System.out.println("buraya geliyor 2 => " + root.ch);
+
+
+
+            if(root != null){
+
+                char ch = root.ch/* what am I doing */;
+                System.out.println(ch);
+                System.out.println("line4 * => " + line4);
+                line4.append(ch);
+
+                while(str.contains(Character.toString(ch)))
+                {
+
+                    i = str.indexOf(Character.toString(ch), i+1);
+                    if(i == -1)
+                        break;
+
+                    guessing = guessing.substring(0,i) + ch + guessing.substring(i+1);
+                }
+                if(!str.contains(Character.toString(ch)))
+                    System.out.println("Bilemediniz. " + j-- + " hakkınız kaldı.");
+                else
+                    System.out.println("Bildiniz!");
+                System.out.println(guessing);
+                Thread.sleep(2000);
+
+                if(str.equals(guessing))
+                    return "Oyunu kazandınız.";
+            }
+
             /*
             * int index = random.nextInt(s.length());
             * return s.charAt(index);
             *
             */
 
-            while(str.contains(Character.toString(ch)))
-            {
-
-                i = str.indexOf(Character.toString(ch), i+1);
-                if(i == -1)
-                    break;
-
-                guessing = guessing.substring(0,i) + ch + guessing.substring(i+1);
-            }
-            if(!str.contains(Character.toString(ch)))
-                System.out.println("Bilemediniz. " + j-- + " hakkınız kaldı.");
-            else {
-                System.out.println("Bildiniz!");
-                j++;
-            }
-            System.out.println(guessing);
-            Thread.sleep(2000);
-
-            if(str.equals(guessing))
-                return "Oyunu kazandınız.";
 
         }while (j>=0);
 
