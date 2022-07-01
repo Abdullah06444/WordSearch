@@ -13,7 +13,7 @@ public class Computer extends Word implements IFile{
     {
 
         System.out.print("Harf sayısını giriniz: ");
-        return random.nextInt(22) + 1;
+        return random.nextInt(21) + 1;
     }
 
     // get the words that the length is equal to determining size
