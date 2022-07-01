@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class People extends Word implements IFile{
 
-    Scanner scanner = new Scanner(System.in);
 
     public int wordLength()
     {
@@ -24,11 +23,14 @@ public class People extends Word implements IFile{
         BufferedReader s = file.read();
 
         String line;
+        Scanner scanner = new Scanner(System.in);
         String line3 = scanner.nextLine();
 
+        // read each line from text file
         while(line3.length() == size && (line = s.readLine()) != null) {
 
             String[] line2 = line.split("\\s+"); // take only first split from specific line
+            // girdiğimiz kelime text dosyasında var mı
             if (line3.equals(line2[0]))
                 return line3;
         }
@@ -39,18 +41,29 @@ public class People extends Word implements IFile{
     }
 
     @Override
-    public String findWord(@NotNull String str) throws StringIndexOutOfBoundsException
-    {
+    public String findWord(@NotNull String str) throws StringIndexOutOfBoundsException {
 
         String guessing = "-".repeat(str.length());
         System.out.println(guessing);
 
         int i = -1, j = 9;
+        StringBuilder line4 = new StringBuilder();
         do {
 
             System.out.print("Harf tahmin edin: ");
-            char ch = scanner.nextLine().charAt(0);
 
+            Scanner scanner = new Scanner(System.in);
+            char ch = Character.toLowerCase(scanner.nextLine().charAt(0));
+
+            // aynı harf girince kalan hak sayımızdan düşmemesi için
+            if(line4.toString().contains(Character.toString(ch))) {
+                System.out.println("Bu harfi daha önce girdiniz.");
+                continue;
+            }
+            // add all characters that the player choose already
+            line4.append(ch);
+
+            // bildikçe indislerin açılışı
             while(str.contains(Character.toString(ch)))
             {
 
@@ -65,6 +78,7 @@ public class People extends Word implements IFile{
             else
                 System.out.println("Bildiniz!");
 
+            //System.out.println("Daha önce girdiğimiz harf stringi => " + line4);
             System.out.println(guessing);
 
             if(str.equals(guessing))

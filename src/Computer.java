@@ -3,7 +3,6 @@ import org.jetbrains.annotations.NotNull;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Random;
 
 public class Computer extends Word implements IFile{
@@ -14,12 +13,12 @@ public class Computer extends Word implements IFile{
     {
 
         System.out.print("Harf sayısını giriniz: ");
-        return random.nextInt(15) + 1;
+        return random.nextInt(22) + 1;
     }
 
     // get the words that the length is equal to determining size
     @Override
-    public String readFile(int size) throws IOException {
+    public String readFile(int size) throws IOException, IllegalArgumentException {
 
         Textfile file = new Textfile();
         BufferedReader s = file.read();
@@ -27,27 +26,30 @@ public class Computer extends Word implements IFile{
         String line;
         ArrayList<String> line3 = new ArrayList<>();
 
+        // read each file from text file
         while((line = s.readLine()) != null) {
 
             String[] line2 = line.split("\\s+"); // take only first split from specific line
+            // girdiğimiz size değerine eşit olan tüm lineları getir
             if(size == line2[0].length())
                 line3.add(line2[0]);
         }
         file.close();
 
-        return line3.get(random.nextInt(line3.size()));
+        if(!line3.isEmpty())
+            return line3.get(random.nextInt(line3.size()));
+        return null;
     }
 
     @Override
     public String findWord(@NotNull String str) throws IOException, InterruptedException {
+
         String guessing = "-".repeat(str.length());
         System.out.println(guessing);
 
         int i = -1, j = 9, k, m;
         StringBuilder line4 = new StringBuilder();
         do {
-
-            System.out.print("Harf tahmin ediyorum: ");
 
             Textfile file = new Textfile();
             BufferedReader s = file.read();
@@ -64,6 +66,9 @@ public class Computer extends Word implements IFile{
                     for (k = 0; k < str.length(); k++)
                     {
 
+                        // ya belirsiz ve önceki seçtiğimiz kelimelerden farklı
+                        // ya da belirli ve ilgili indisler ile aynı
+                        // böylelikle guessing için string liste elemanları azalır
                         if(guessing.charAt(k) == '-' && !line4.toString().contains(Character.toString(line2[0].charAt(k)))
                         || guessing.charAt(k) == line2[0].charAt(k))
                             continue;
@@ -73,8 +78,8 @@ public class Computer extends Word implements IFile{
                         line3.add(line2[0]);
                 }
             }
-            System.out.println("line3 => " + line3);
-            System.out.println("line4 => " + line4);
+            //System.out.println("Aynı uzunluktaki kelimeler dizisi => " + line3);
+            //System.out.println("Daha önce girilen harf stringi => " + line4);
             file.close();
 
 
@@ -84,25 +89,28 @@ public class Computer extends Word implements IFile{
 
                 for(m = 0; m < line3.get(k).length(); m++){
 
+                    // böylelikle bildiği indislerdeki harfleri almıyor
                     if(guessing.charAt(m) == '-')
                         if(root == null)
                             root = new Node(line3.get(k).charAt(m));
                         else
                             root = root.add(root, line3.get(k).charAt(m));
-                    //System.out.println("buraya geliyor 1 => count => " + count++ + " y => " + y);
                 }
             }
-            //System.out.println("buraya geliyor 2 => " + root.ch);
 
 
 
             if(root != null){
 
-                char ch = root.ch/* what am I doing */;
+                char ch = root.ch;/* what am I doing. How can the computer choose a specific word. */
+
+                System.out.print("Harf tahmin ediyorum: ");
                 System.out.println(ch);
-                System.out.println("line4 * => " + line4);
+
+                // add all characters that it choose already
                 line4.append(ch);
 
+                // bildikçe indislerin açılması
                 while(str.contains(Character.toString(ch)))
                 {
 
@@ -116,19 +124,14 @@ public class Computer extends Word implements IFile{
                     System.out.println("Bilemediniz. " + j-- + " hakkınız kaldı.");
                 else
                     System.out.println("Bildiniz!");
+
                 System.out.println(guessing);
                 Thread.sleep(2000);
 
                 if(str.equals(guessing))
                     return "Oyunu kazandınız.";
+
             }
-
-            /*
-            * int index = random.nextInt(s.length());
-            * return s.charAt(index);
-            *
-            */
-
 
         }while (j>=0);
 

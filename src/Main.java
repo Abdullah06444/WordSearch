@@ -23,24 +23,25 @@ public class Main {
 
                 size = computer.wordLength();
                 System.out.println(size);
+                System.out.println("Sözlükte olan " + size + " uzunluğunda bir kelime seçelim:");
                 str = people.readFile(size);
                 computer.setWord(str);
+                //Oyuncunun seçtiği kelimeyi görmek için
+                //System.out.println(str);
                 System.out.println(computer.findWord(computer.getWord()));
-
-
+                System.out.println("Oyuncunun seçtiği kelime " + str);
             }
             case 2 -> { // People
 
                 size = people.wordLength();
                 str = computer.readFile(size);
                 people.setWord(str);
-                System.out.println(str);
+                //Bilgisayarın seçtiği kelimeyi görmek için
+                //System.out.println(str);
                 System.out.println(people.findWord(people.getWord()));
-
-
+                System.out.println("Bilgisayarın seçtiği kelime " + str);
             }
             default -> throw new IllegalStateException("Yanlış seçim yaptınız.");
         }
-
     }
 }
