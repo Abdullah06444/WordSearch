@@ -90,7 +90,7 @@ public class Computer extends Word implements IFile{
                 for(m = 0; m < line3.get(k).length(); m++){
 
                     // böylelikle bildiği indislerdeki harfleri almıyor
-                    if(guessing.charAt(m) == '-')
+                    if(guessing.charAt(m) == '-' && line3.get(k).charAt(m) != '-' /*herhangi bir kelimede tire '-' karakteri varsa*/)
                         if(root == null)
                             root = new Node(line3.get(k).charAt(m));
                         else
